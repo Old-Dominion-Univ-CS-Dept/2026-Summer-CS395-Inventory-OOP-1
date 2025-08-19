@@ -2,7 +2,7 @@ use std::fmt::{Debug, Display};
 
 use crate::item::Item;
 
-#[derive(Clone, Debug, PartialEq, Eq)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub struct Consumable {
     name: String,
     effect: String,
@@ -45,13 +45,6 @@ impl Consumable {
 
     pub fn set_effect(&mut self, eft: &str) {
         self.effect = String::from(eft);
-    }
-}
-
-impl std::hash::Hash for Consumable {
-    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
-        self.name.hash(state);
-        self.effect.hash(state);
     }
 }
 
